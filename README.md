@@ -41,7 +41,10 @@ echo "<div class='archievebox'><a href=''>View Details</a></div>";
 echo "<hr>"; 
 
 } ```
+#
+#
 #list all users in a table with info
+#
 $search_filter = "(&(objectCategory=person))";
 $result = ldap_search($ds, $LDAPContainer, $search_filter);
 if (FALSE !== $result){
