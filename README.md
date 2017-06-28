@@ -8,8 +8,9 @@ $varConverted = htmlspecialchars($var, ENT_QUOTES, 'UTF-8');
 
 
 #LDAP PHP | user attribute
-#
-```// $ds is a valid connexion id (samAccountName)
+
+```PHP
+// $ds is a valid connexion id (samAccountName)
 $filterall='(&(objectCategory=person)(employeeid=*)(sAMAccountName='.$_SESSION["username"].'))';
 $justthese = array("displayname","department" , "title",  "whenCreated","employeeid"); 
 $result = ldap_search($ds,$LDAPContainer , $filterall ,$justthese) or die ("Search failed");
@@ -41,10 +42,14 @@ echo "<div class='archievebox'><a href=''>View Details</a></div>";
 echo "<hr>"; 
 
 } ```
-#
-#
+
+
+
+
+
 #list all users in a table with info
-#
+
+```PHP
 $search_filter = "(&(objectCategory=person))";
 $result = ldap_search($ds, $LDAPContainer, $search_filter);
 if (FALSE !== $result){
@@ -95,6 +100,5 @@ if (FALSE !== $result){
       echo '</table>';
   }
 }
-
-
+```
 
