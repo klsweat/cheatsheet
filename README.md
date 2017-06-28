@@ -8,7 +8,8 @@ $varConverted = htmlspecialchars($var, ENT_QUOTES, 'UTF-8');
 
 
 #LDAP PHP | user attribute
-// $ds is a valid connexion id (samAccountName)
+#
+`// $ds is a valid connexion id (samAccountName)
 $filterall='(&(objectCategory=person)(employeeid=*)(sAMAccountName='.$_SESSION["username"].'))';
 $justthese = array("displayname","department" , "title",  "whenCreated","employeeid"); 
 $result = ldap_search($ds,$LDAPContainer , $filterall ,$justthese) or die ("Search failed");
@@ -39,7 +40,7 @@ print "Date Created : ".$month."/".$day."/".$year. "\n";
 echo "<div class='archievebox'><a href=''>View Details</a></div>";
 echo "<hr>"; 
 
-} 
+} `
 
 #list all users in a table with info
 
