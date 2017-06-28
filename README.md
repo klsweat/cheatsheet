@@ -47,7 +47,7 @@ echo "<hr>";
 
 
 
-#list all users in a table with info
+#[list all users in a table with info]
 
 ```PHP
 $search_filter = "(&(objectCategory=person))";
