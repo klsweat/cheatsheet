@@ -105,11 +105,42 @@ if (FALSE !== $result){
 
 
 
-#### H4
+#### MAKE A AJAX REQUEST AND RUN MULTIPLE MSSQL QUERIES, AND RETURN RESULTS IN ARRAY
+$sql="";
+$result = mssql_query($sql);
+while($row=mssql_fetch_array($result))
+  {
+    $var = $row['sql_var'];
+    $array[] = '<option value="'.$var.'">'.$var.'</option>';
+  }
+  
+  $arr = array();
+  
+  $arr[1] = $array; 
+  
+  echo json_encode($arr);
+  exit;
+  
+  ---
+
+AJAX REQUEST
+------
+__AJAX CALL ON INDEX.PHP FILE__.
+__RETURN IN JSON FORMAT__.
+__RENDER TO SELECT MENU__.
 
 
-
-
+$.ajax({
+  url: '../',
+  data: dataString,
+  type: 'post',
+  dataType: "json"
+}).done(function(responseData) {
+  console.log('Done: ', responseData);
+  $("#select_id").html(responseData).selectmenu('refresh', true);
+}).fail(function() {
+  console.log('Failed');
+});
 
 
 
