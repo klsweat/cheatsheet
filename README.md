@@ -106,6 +106,7 @@ if (FALSE !== $result){
 
 
 #### MAKE A AJAX REQUEST AND RUN MULTIPLE MSSQL QUERIES, AND RETURN RESULTS IN ARRAY
+```
 $sql="";
 $result = mssql_query($sql);
 while($row=mssql_fetch_array($result))
@@ -120,7 +121,7 @@ while($row=mssql_fetch_array($result))
   
   echo json_encode($arr);
   exit;
-  
+  ```
   ---
 
 AJAX REQUEST
@@ -129,7 +130,7 @@ __AJAX CALL ON INDEX.PHP FILE__.
 __RETURN IN JSON FORMAT__.
 __RENDER TO SELECT MENU__.
 
-
+```
 $.ajax({
   url: '../',
   data: dataString,
@@ -142,7 +143,7 @@ $.ajax({
   console.log('Failed');
 });
 
-
+```
 
 
 
