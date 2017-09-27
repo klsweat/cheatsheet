@@ -150,3 +150,25 @@ $.ajax({
 
 
 
+
+
+
+
+
+GIT CHANGE LOG
+-----------------
+
+git log --format="%ad|%s|%an" | ForEach-Object {
+  New-Object PSObject -Property @{
+    Time = $_.Split('|')[0]
+    Message = $_.Split('|')[1]
+    Author = $_.Split('|')[2]
+  }
+} | Format-Table -Property @{Expression={$_.Time};width=25;Label="Author date"}, 
+                           @{Expression={$_.Message};Width=25;Label="Commit message"}, 
+                           @{Expression={$_.Author};Width=11;Label="Author name"}
+
+
+
+
+
