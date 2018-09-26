@@ -1,4 +1,12 @@
 # cheatsheet
+#SEQUELIZE:
+Create Models: 
+- sequelize model:create --name Todo --attributes title:string,description:string
+
+
+
+
+
 #PHP
 
 $var = $link->real_escape_string($_POST['DESCRIPTION']); 
