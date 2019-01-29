@@ -178,5 +178,23 @@ git log --format="%ad|%s|%an" | ForEach-Object {
 
 
 
+## HTML dynamic dropdown Javascript 
+  ```
+$(document).ready(function() {
+    $('#turnback_type_qualtiy').bind('change', function() {
+        var elements = $('div.container_quality').children().hide(); // hide all the elements
+            var value = $(this).val();
+            var selectVal = $("option:selected", this).attr("id");
+            
+            if (value.length) { // if somethings' selected
+                elements.filter('.' + selectVal).show(); // show the ones we want
+                $('.quality_hide').hide();
+
+            }
+    }).trigger('change');
+})
+```  
+
+
 
 
