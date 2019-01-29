@@ -178,8 +178,74 @@ git log --format="%ad|%s|%an" | ForEach-Object {
 
 
 
-## HTML dynamic dropdown Javascript 
-  ```
+## HTML nest dynamic dropdowns Javascript 
+ 
+ ```angular2html
+<label><h3 style="height:10px;">TURNBACK CATEGORY:</h3></label> 
+<select size="1" id="turnback_category" title="" name="turnback_category" >
+    <option selected value=''>-- SELECT --</option>
+    <option class="documentation"  value='Documentation'>Documentation</option>
+    <option class="Quality" value='Quality'>Quality</option>
+</select>
+
+<div class="container" style="margin-top:0px !important;">
+    <!--DOCUMENTATION-->
+    <div class="Documentation">
+        <label><h3 style="height: 10px;">TURNBACK TYPE:</h3></label> 
+        <select name='turnback_type_doc' id="turnback_type_doc" data-theme="f" data-native-menu="true" >    
+            <option selected value=''>-- SELECT --</option>
+            <option class="documentation" id="print" value='Print'>Print</option>
+            <option class="documentation" id="Inspection" value='Inspection'>Inspection</option>
+        </select> 
+
+        <label><h3 style="height: 10px;">TURNBACK ISSUE:</h3></label> 
+        <select name='turnback_issue_doc' id="turnback_issue_doc" data-theme="f" data-native-menu="true" >  
+            <option selected value=''>-- SELECT --</option>
+            <option id="print" value='Incorrect'>Incorrect</option>
+            <option id="print" value='Missing'>Missing</option>  
+        </select>     
+
+    </div><!--/documentation-->
+
+    <!--QUALITY-->
+    <div class="Quality">
+        <label><h3 style="height: 10px;">TURNBACK TYPE:</h3></label> 
+        <select name='turnback_type_qualtiy' id="turnback_type_qualtiy" data-theme="f" data-native-menu="true" >
+            <option selected value=''>-- SELECT --</option>   
+            <option class="Quality" id="Gaging" value='Gaging'>Gaging</option>
+            <option class="Quality" id="cmm" value='CMM/Comparator'>CMM/Comparator</option>
+            <option class="Quality"  id="no_staff" value='No Staff'>No Staff</option>  
+        </select> 
+
+        <div class="quality_hide">
+            <label><h3 style="height: 10px;">TURNBACK ISSUE:</h3></label> 
+            <select name='turnback_issue' id="turnback_issue" data-theme="f" data-native-menu="true" >
+                <option selected value=''> -- SELECT --</option>
+                <option  value=''>You must select a Turnback Type before selecting a Turnback Issue</option>            
+            </select>
+            
+            <div class="container_quality">
+                <div class="Gaging">
+                    <label><h3 style="height: 10px;">TURNBACK ISSUE:</h3></label> 
+                    <select name='turnback_issue_Gaging' id="turnback_issue_Gaging" data-theme="f" data-native-menu="true" >
+                        <option selected value=''>-- SELECT --       </option>
+                        <option  id="Gaging" value='Missing'>Missing</option>
+                        <option id="Gaging" value='Incorrect'>Incorrect</option>
+                    </select> 
+                </div><!--/Gaging-->
+            
+                <div class="cmm">
+                    <label><h3 style="height: 10px;">TURNBACK ISSUE:</h3></label> 
+                    <select name='turnback_issue_CMM' id="turnback_issue_CMM" data-theme="f" data-native-menu="true" >
+                        <option value='In Use'>In Use</option>
+                    </select> 
+                </div><!--/CMM/Comparator-->
+            </div><!--/container_quality-->
+    </div>
+</div> <!-- /container -->
+```
+ 
+  ```angular2html
 $(document).ready(function() {
     $('#turnback_type_qualtiy').bind('change', function() {
         var elements = $('div.container_quality').children().hide(); // hide all the elements
@@ -192,9 +258,18 @@ $(document).ready(function() {
 
             }
     }).trigger('change');
+    
+    $('#turnback_type_qualtiy').bind('change', function() {
+        var elements = $('div.container_quality').children().hide(); // hide all the elements
+        var value = $(this).val();
+        var selectVal = $("option:selected", this).attr("id");
+    
+        if (value.length) { // if somethings' selected
+            elements.filter('.' + selectVal).show(); // show the ones we want
+            $('.quality_hide').hide();
+        }
+    }).trigger('change');
 })
 ```  
-
-
 
 
