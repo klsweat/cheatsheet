@@ -273,3 +273,9 @@ $(document).ready(function() {
 ```  
 
 
+javascript
+ uniqueArray = jtArray.filter((obj, index) => {
+          return jtArray.map(obj => obj['title']).indexOf(obj['title']) === index;
+        }); 
+
+
